@@ -1,6 +1,41 @@
 {% extends 'base.html' %}
 
 {% block 'content' %}
-<h1>From index page</h1>
+<form action = '{% url 'generate' %}' method='POST'>
+    {% csrf_token %}
+    <div class="row mb-3">
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Length</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control" name = "length" id="length" min="1" max="15" step="1">
+        </div>
+    </div>
+    <fieldset class="row mb-3">
+        <legend class="col-form-label col-sm-2 pt-0">Type</legend>
+        <div class="col-sm-10">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="alphanumeric" checked>
+                <label class="form-check-label" name = "alphanumeric" for="gridRadios1">
+                    Alphanumeric
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="alphabetic">
+                <label class="form-check-label" name = "alphabetic" for="gridRadios1">
+                    Alphabetic
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="numeric">
+                <label class="form-check-label" name = "numeric" for="gridRadios1">
+                    Numeric
+                </label>
+            </div>
+        </div>
+    </fieldset>
+    
+        <div class = "center">
+    <button type="submit" class="btn btn-primary">Generate</button>
+        </div>
+    
+</form>
 {% endblock 'content' %}
-
